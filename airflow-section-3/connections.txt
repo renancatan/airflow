@@ -1,0 +1,51 @@
+# check API availability
+    - Conn Id *
+        forex_api
+
+    - Conn Type *
+        HTTP
+
+    - Host
+        https://gist.github.com
+
+
+# Sensor Conn
+    - Conn Id *
+        forex_path
+
+    - Conn Type *
+        File (path)
+
+    - Extra
+        {"path":"/opt/airflow/dags/files"}
+
+
+# Hive 
+    - Conn Id *
+        hive_conn
+
+    - Conn Type *
+        Hive Server 2 Thrift
+
+    - Host
+        hive-server
+
+    - Login and Password
+        hive
+
+    - Port
+        10000
+
+
+# Spark 
+    - Conn Id *
+        spark_conn
+
+    - Conn Type *
+        Spark
+
+    - Host
+        spark://spark-master
+
+    - Port
+        7077

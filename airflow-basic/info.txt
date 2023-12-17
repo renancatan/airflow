@@ -1,0 +1,24 @@
+// to Start and Kill docker containers
+ ./start.sh                    
+docker-compose down
+
+// trigger the dag
+airflow dags trigger example_bash_operator -e 2024-01-01
+
+// see stats (start/end Date) for the dag
+airflow dags list-runs -d example_bash_operator
+
+// backfill dags that didnt run previously [good when we make a mistake and want to rerun]
+   -> -s=startDate, -d=endDate, --reset-dagruns=retry already passed triggered diagrams
+airflow dags backfill -s 2024-01-01 -e 2024-01-05 --reset-dagruns
+
+// List the tasks of a given dag.. >>TO CONTINUE<<
+airflow tasks list example_bash_operator
+
+// Test specific tasks inside a dag
+docker exec -it [AIRFLOW_CONTAINER] /bin/bash
+airflow tasks test [DAG_ID] [TASK_ID] 2021-01-01
+
+
+
+
